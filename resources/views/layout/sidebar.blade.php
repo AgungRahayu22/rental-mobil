@@ -17,8 +17,8 @@
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Transaksi</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-file-archive me-2"></i>Laporan Transaksi</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Mobil</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-users me-2"></i>User</a>
+                    <a href="{{ route('mobil') }}" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Mobil</a>
+                    <a href="{{ route('users') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>User</a>
 
                 </div>
             </nav>
