@@ -21,3 +21,11 @@ Route::get('users',function (){
 Route::get('mobil',function (){
     return view('mobil.index');
 })->name('mobil')->middleware('auth');
+
+Route::get('transaksi',function (){
+    return view('transaksi.index');
+})->name('transaksi')->middleware('auth');
+
+Route::get('laporan',function (){
+    return view('laporan.index');
+})->name('laporan')->middleware('auth');

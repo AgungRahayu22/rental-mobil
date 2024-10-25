@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Mobil::class);
             $table->string('nama')->nullable();
             $table->string('ponsel')->nullable();
+            $table->string('lama')->nullable();
             $table->string('alamat')->nullable();
             $table->date('tgl_pesan')->nullable();
             $table->string('total')->nullable();

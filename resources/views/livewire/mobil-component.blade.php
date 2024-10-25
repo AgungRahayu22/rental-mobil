@@ -6,7 +6,7 @@
                         <div class="alert alert-success " role="alert">{{ session('success') }}</div>
 
                     @endif
-                    <h6 class="mb-4">Data Users</h6>
+                    <h6 class="mb-4">Data Mobil</h6>
                         <table class="table">
                                 <thead>
                                 <tr>
@@ -46,7 +46,7 @@
                         </tbody>
                 </table>
                 {{ $mobil->links() }}
-                <button wire:click="create" class="btn btn-primary">Tambah</button>
+                <button wire:click="create({{ $data->mobil_id }})" class="btn btn-primary">Tambah</button>
 
             </div>
         </div>
