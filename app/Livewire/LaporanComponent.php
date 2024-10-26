@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\On;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Mobil;
 
 class LaporanComponent extends Component
 {

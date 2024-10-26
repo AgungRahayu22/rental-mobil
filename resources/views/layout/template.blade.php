@@ -33,7 +33,6 @@
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
 
 
 

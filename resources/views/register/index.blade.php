@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Register</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -29,65 +29,158 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <style>
+        body {
+            background: #ffffff;
+            font-family: 'Heebo', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .register-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+       .register-image {
+            flex: 1; /* Mengubah proporsi gambar */
+            background: url('{{ asset("assets/img/bg1.jpg") }}');
+            background-size: contain; /* Mengubah dari cover ke contain */
+            background-position: center;
+            background-repeat: no-repeat; /* Menambahkan no-repeat */
+            margin-left: 120px; /* Menambahkan margin */
+        }
+
+        .register-form {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: white;
+        }
+
+       .form-box {
+    width: 100%;
+    height: 60%;
+    max-width: 500px; /* Meningkatkan lebar maksimum form */
+    padding: 50px; /* Meningkatkan padding untuk memberi lebih banyak ruang di dalam form */
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+        .form-floating {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ced4da;
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 500;
+            background-color: #0d6efd;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .text-danger {
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .alert {
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .register-container {
+                flex-direction: column;
+            }
+
+            .register-image {
+                height: 200px;
+            }
+
+            .register-form {
+                padding: 20px;
+            }
+
+            .form-box {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+    <!-- Spinner tetap sama -->
 
-
-        <!-- Sign Up Start -->
-        <div class="container-fluid">
-            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class=""></i>Mobilku</h3>
-                            </a>
-                            <h3>Sign Up</h3>
-                        </div>
-                        @if (session()->has('success'))
-                            <div class="alert alert-success " role="alert">{{ session('success') }}</div>
-                        @endif
-                        <form action="{{ route('register.store') }}" method="POST">
-                            @csrf
-                            @error('name')
-                                  <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                            <div class="form-floating mb-3">
-                            <input type="text" name="name" class="form-control" id="floatingText" placeholder="Name" value="{{ @old('name') }}">
-                            <label for="floatingText">Nama</label>
-                        </div>
-                        @error('email')
-                                  <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="{{ @old('email') }}">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        @error('password')
-                                  <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control"name="password" value="{{ @old('password') }}" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
-                        <p class="text-center mb-0">Already have an Account? <a href="{{ route('login') }}">Sign In</a></p>
-                        </form>
-
-                    </div>
+    <div class="register-container">
+        <div class="register-image"></div>
+        <div class="register-form">
+            <div class="form-box ">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h3 class="text-primary m-0">Mobilku</h3>
+                    <h3 class="m-0">Sign Up</h3>
                 </div>
+
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('register.store') }}" method="POST">
+                    @csrf
+
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <div class="form-floating">
+                        <input type="text" name="name" class="form-control" id="floatingText" placeholder="Name" value="{{ @old('name') }}">
+                        <label for="floatingText">Nama</label>
+                    </div>
+
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <div class="form-floating">
+                        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="{{ @old('email') }}">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-4">Sign Up</button>
+                    <p class="text-center mb-0">Already have an Account? <a href="{{ route('login') }}">Sign In</a></p>
+                </form>
             </div>
         </div>
-        <!-- Sign Up End -->
     </div>
 
     <!-- JavaScript Libraries -->

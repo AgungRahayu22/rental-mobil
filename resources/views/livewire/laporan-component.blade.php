@@ -1,64 +1,64 @@
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
-        <div class="col-sm-12 col-xl-12">
-                <div class="bg-light rounded h-100 p-4">
-                    @if (session()->has('success'))
-                        <div class="alert alert-success " role="alert">{{ session('success') }}</div>
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+                @endif
 
-                    @endif
-                    <h6 class="mb-4">Data Laporan Transaksi</h6>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input type="date"wire:model="tanggal1" class="form-control " placeholder="tanggal">
-                            </div>
-                            <div class="col-md-1">
-                                s/d
-                            </div>
-                            <div class="col-md-4">
-                                <input type="date" wire:model="tanggal2" class="form-control " placeholder="s/d tanggal">
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-sm btn-primary" wire:click="cari">filter</button>
-                            </div>
-                        </div>
-                        <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">No Polisi</th>
-                                    <th scope="col">Nama Pemesan</th>
-                                    <th scope="col">Alamat</th>
-                                    <th>Lama</th>
-                                    <th>Tanggal Pesan</th>
-                                    <th>Total</th>
+                <h4 class="mb-4 text-center">DATA LAPORAN TRANSAKSI</h4>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($transaksi as $data )
-                                    <tr>
-                                    <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $data->mobil->nopolisi }}</td>
-                                    <td>{{ $data->nama }}</td>
-                                    <td>{{ $data->alamat }}</td>
-                                    <td>{{ $data->lama }}</td>
-                                    <td>{{ $data->tgl_pesan }}</td>
-                                    <td>@rupiah($data->total)</td>
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <input type="date" wire:model="tanggal1" class="form-control" placeholder="Tanggal Awal">
+                    </div>
+                    <div class="col-md-1 d-flex align-items-center justify-content-center">
+                        <span>s/d</span>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" wire:model="tanggal2" class="form-control" placeholder="Tanggal Akhir">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-sm btn-primary" wire:click="cari">Filter</button>
+                    </div>
+                </div>
 
-                                </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="6">Data Laporan Belum ada!</td>
-                                </tr>
-                                @endforelse
-
-                        </tbody>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">No Polisi</th>
+                            <th scope="col">Nama Pemesan</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Lama</th>
+                            <th scope="col">Tanggal Pesan</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($transaksi as $data)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $data->mobil->nopolisi ?? 'N/A' }}</td>
+                                <td>{{ $data->nama }}</td>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->lama }}</td>
+                                <td>{{ $data->tgl_pesan }}</td>
+                                <td>@rupiah($data->total)</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" class="text-center">Data Laporan Belum ada!</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
                 </table>
-                {{ $transaksi->links() }}
-                <button class="btn btn-primary" wire:click="exportpdf">Export PDF</button>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    {{ $transaksi->links() }}
+                    <button class="btn btn-primary" wire:click="exportpdf">Export PDF</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-

@@ -23,6 +23,7 @@ class MobilComponent extends Component
     public function create(){
         $this->addPage=true;
     }
+
     public function store(){
         $this->validate([
             'nopolisi' => 'required',
@@ -106,5 +107,31 @@ public function update(){
     session()->flash('success', 'Berhasil diubah');
     $this->reset(); // Reset semua properti
 }
+public function destroy($id)
+{
+    $mobil = Mobil::find($id);
+
+    // Periksa apakah mobil ditemukan
+    if (!$mobil) {
+        session()->flash('error', 'Mobil tidak ditemukan!');
+        return;
+    }
+
+    // Hapus foto dari storage jika ada
+    if (!empty($mobil->foto) && file_exists(public_path('storage/mobil/' . $mobil->foto))) {
+        unlink(public_path('storage/mobil/' . $mobil->foto));
+    }
+
+    // Hapus data mobil
+    $mobil->delete();
+
+    session()->flash('success', 'Data mobil berhasil dihapus!');
+    $this->reset(); // Reset properti setelah penghapusan
+}
+public function mobil()
+{
+    return $this->belongsTo(Mobil::class, 'mobil_id');
+}
+
 }
 

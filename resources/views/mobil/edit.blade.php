@@ -1,4 +1,4 @@
-<div class="container-fluid pt-4 px-4">
+<div class="mt-4">
     <div class="row g-4">
 <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
@@ -26,7 +26,7 @@
                                     <select name="" class="form-select" wire:model="jenis">
                                         <option value="">--Pilih--</option>
                                         <option value="sedan">Sedan</option>
-                                        <option value="MPV">MPV</option>
+                                        <option value="MVP">MVP</option>
                                         <option value="SUV">SUV</option>
                                     </select>
 
